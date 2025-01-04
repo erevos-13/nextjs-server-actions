@@ -14,14 +14,11 @@ First, let's look at how server actions are defined. In our project, we have a s
 export async function create(formData: FormData) {
   const name = formData.get('name');
   const description = formData.get('description');
-  const imageUrl = formData.get('imageUrl');
-  const articleUrl = formData.get('articleUrl');
-  const slug = formData.get('slug');
-  console.log(name, description, imageUrl, articleUrl, slug);
+  const completed = formData.get('completed');
   try {
     const response = await fetch('http://localhost:3000/api/todo', {
     method: 'POST',
-    body: JSON.stringify({name, description, imageUrl, articleUrl, slug}),
+    body: JSON.stringify({name, description, completed}),
   });
   const data = await response.json();
   return data;
